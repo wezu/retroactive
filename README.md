@@ -18,5 +18,5 @@ python -m pip install panda3d
 To run the game type in:
 
 ```
-python run_game.py
+python main.py
 ```
