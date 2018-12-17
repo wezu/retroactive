@@ -1,0 +1,57 @@
+<CoordinateSystem> { Z-Up }
+
+<Group> character {
+  <Dart> { 1 }
+  <Group> "Scene Root" {
+    <Group> pilot {
+      <VertexPool> pilot.verts {
+        <Vertex> 0 {
+          37.2574 -39.9733 0
+          <UV> { 0 1 }
+          <Normal> { 0 0 1 }
+          // Bone002:1
+        }
+        <Vertex> 1 {
+          37.2574 -40.9733 0
+          <UV> { 0 0 }
+          <Normal> { 0 0 1 }
+          // Bone002:1
+        }
+        <Vertex> 2 {
+          38.2574 -39.9733 0
+          <UV> { 1 1 }
+          <Normal> { 0 0 1 }
+          // Bone002:1
+        }
+        <Vertex> 3 {
+          38.2574 -40.9733 0
+          <UV> { 1 0 }
+          <Normal> { 0 0 1 }
+          // Bone002:1
+        }
+      }
+      <Polygon> {
+        <RGBA> { 1 1 1 1 }
+        <VertexRef> { 0 1 2 <Ref> { pilot.verts } }
+      }
+      <Polygon> {
+        <RGBA> { 1 1 1 1 }
+        <VertexRef> { 3 2 1 <Ref> { pilot.verts } }
+      }
+    }
+  }
+  <Joint> Bone002 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        37.7574 -40.4733 0 1
+      }
+    }
+    <VertexRef> {
+      0 1 2 3
+      <Ref> { pilot.verts }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+<CoordinateSystem> { Z-Up }
+
+<Group> character {
+  <Dart> { 1 }
+  <Joint> monster000 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        12.3381 -29.9142 0.788556 1
+      }
+    }
+  }
+  <Joint> monster001 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        1.62045 -28.0959 0.788556 1
+      }
+    }
+  }
+  <Joint> monster002 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        3.69927 -40.3344 0.788556 1
+      }
+    }
+  }
+  <Joint> monster003 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        -2.47206 -30.7314 0.554754 1
+      }
+    }
+  }
+  <Joint> monster004 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        -0.384798 -19.6187 0.554754 1
+      }
+    }
+  }
+  <Joint> monster005 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        -3.37733 -13.5165 0.86231 1
+      }
+    }
+  }
+  <Joint> monster006 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        -3.03054 -3.96164 2.61356 1
+      }
+    }
+  }
+  <Joint> monster007 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        2.78879 -4.63848 1.24323 1
+      }
+    }
+  }
+  <Joint> monster008 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        0.938437 2.54041 1.24323 1
+      }
+    }
+  }
+  <Joint> monster009 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        12.5645 6.71617 1.01433 1
+      }
+    }
+  }
+  <Joint> monster010 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        4.58933 10.6436 1.52551 1
+      }
+    }
+  }
+  <Joint> monster011 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        -1.78428 13.6586 1.52551 1
+      }
+    }
+  }
+  <Joint> monster012 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        -3.49245 24.2529 1.67492 1
+      }
+    }
+  }
+  <Joint> monster013 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        4.99013 27.768 1.67492 1
+      }
+    }
+  }
+  <Joint> monster014 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        11.9552 19.0554 1.67492 1
+      }
+    }
+  }
+  <Joint> monster015 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        20.6073 21.9779 1.67492 1
+      }
+    }
+  }
+  <Joint> monster016 {
+    <Transform> {
+      <Matrix4> {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        14.6079 44.4061 1.67492 1
+      }
+    }
+  }
+}
