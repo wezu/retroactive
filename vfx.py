@@ -15,6 +15,7 @@ class Vfx:
         self.node.set_attrib(shader_attrib)
         self.node.set_transparency(TransparencyAttrib.M_alpha, 1)
         self.node.set_depth_test(False)
+        #self.node.set_depth_offset(10)
         self.scale=PointerToArrayFloat()
         self.scale.push_back(1.0)
         self.node.set_shader_input('scale', self.scale)

@@ -1,7 +1,7 @@
-# retroactive
+# Retroactive
 Extra Credits Holiday 2018 Game Jam entry
 
-#How to run?
+# How to run?
 
 You will need Python 3.x and Panda3D installed to run this game.
 

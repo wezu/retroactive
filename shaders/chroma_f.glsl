@@ -12,10 +12,13 @@ out vec4 fragColor;
 void main()
     {
     vec2 res=textureSize(input_tex, 0).xy;
-    vec3 beat=vec3(1.0)+texture(beat_tex, beat_uv).rgb;
+    vec3 beat=texture(beat_tex, beat_uv).rgb;
+    float beat_factor=0.1+beat.x*beat.y*beat.z*10.0;
+    beat+=vec3(1.0);
     vec2 pixel = vec2(1.0)/res;
 
-    vec3 chroma_distort = vec3(-3.75, 2.5, 7.5)*beat*pow(0.1+distance(uv, vec2(0.5, 0.5)), 2.0);
+
+    vec3 chroma_distort = vec3(-3.75, 2.5, 7.5)*pow(beat_factor+distance(uv, vec2(0.5)), 2.0);
 
     // cromatic distort:
     fragColor = vec4(0.0, 0.0, 0.0, 1.0);
@@ -23,6 +26,7 @@ void main()
     fragColor.g = texture(input_tex, uv +uv*pixel* chroma_distort.y).g;
     fragColor.b = texture(input_tex, uv +uv*pixel* chroma_distort.z).b;
     //beat to color
-    fragColor.rgb*=clamp(beat, vec3(1.0), vec3(1.9));
+    fragColor.rgb*=beat;//, vec3(1.0), vec3(1.9));
+    fragColor=clamp(fragColor, vec4(0.0), vec4(1.0));
     }
 

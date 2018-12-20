@@ -329,6 +329,8 @@ class App(DirectObject):
 
         self.player_hp=100
         self.vis_tsk_timer=0
+        self.screen_shake=0
+        self.shake_tilt=0
 
         self.text_hide_seq=Sequence()
         self.game_over_seq=Sequence()
@@ -382,6 +384,7 @@ class App(DirectObject):
             self.audio.play_sound('laser_hit3', node=None, pos=hit_pos)
             self.player_hp-=3.3
             self.shields_label['text']='{:03.0f}%'.format(self.player_hp)
+            self.screen_shake+=10
             #print('player hp:', self.player_hp)
             if self.player_hp<0:
                 self.game_over()
@@ -463,17 +466,17 @@ class App(DirectObject):
         if hit_node:
             hit_vfx=Vfx('vfx/spark_explode.png', False, 60, 256)
             hit_vfx.set_scale(1.5)
-            hit_vfx.set_pos(hit_pos)
+            #hit_vfx.set_pos(hit_pos)
+            hit_vfx.set_pos(projectile.visual.get_pos(render))
             self.audio.play_sound('laser_hit2', node=None, pos=hit_pos)
             if hit_node.get_name()=='monster':
                 hp=hit_node.get_python_tag('hp')-1
                 hit_node.set_python_tag('hp', hp)
                 if hp <0:
                     hit_node.get_python_tag('model').set_color((0.2,0,0,1), 1)
-                    #hit_node.set_z(hit_node.get_z()+0.1)
+                    hit_node.get_python_tag('model').hide()
                     np=NodePath().any_path(hit_node)
                     np.set_collide_mask(BitMask32().all_off())
-                    np.hide()
                     self.explode(np.get_pos(render))
 
         projectile.remove()
@@ -488,8 +491,6 @@ class App(DirectObject):
             # Transform to global coordinates
             from_point = render.get_relative_point(base.cam, from_point)
             to_point = render.get_relative_point(base.cam, to_point)
-            #move from_point closer to to_point
-            #from_point+=(to_point-from_point).normalized()*self.pc.node.get_distance(base.camera)*0.7
             return self.ray_test(from_point, to_point, mask)
         return None
 
@@ -518,9 +519,13 @@ class App(DirectObject):
             pass
         self.beat_uv.x=0
         self.pta_beat_uv[0]=self.beat_uv
-        self.accept('mouse1', self.start_game)
+        s=Sequence(Func(self.fade_screen, 0.5), Wait(0.55), Func(self.start_game))
+        self.accept('mouse1', s.start)
+
+
 
     def start_game(self):
+        self.fade_screen(0.5)
         self.player_hp=100
         self.shield_parent.show()
         self.shields_label.show()
@@ -581,6 +586,15 @@ class App(DirectObject):
                 hpr=joint.get_hpr(render)
                 monster.set_pos_hpr(pos, hpr)
 
+        if self.screen_shake>0:
+            r=random.uniform(-1.0, 1.0)
+            self.shake_tilt+=r
+            base.cam.set_r(base.cam.get_r()+r)
+            self.screen_shake-=1
+        elif self.screen_shake == 0:
+            self.screen_shake-=1
+            base.cam.set_r(base.cam.get_r()-self.shake_tilt)
+            self.shake_tilt=0
 
         self.beat_uv.x+=dt*1.0/173.95
         if self.beat_uv.x>1.0:
