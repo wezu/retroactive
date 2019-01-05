@@ -37,7 +37,7 @@ from loading_screen import loading
 
 wp = WindowProperties.getDefault()
 wp.set_title("Retro-Active by wezu")
-wp.set_cursor_filename('cursor.cur')
+wp.set_cursor_filename('img/cursor.cur')
 wp.set_icon_filename('img/p3d.ico')
 WindowProperties.setDefault(wp)
 
@@ -264,7 +264,7 @@ class App(DirectObject):
             #we'll be updating this each frame,
             # so we need a pointer in order not to call
             #set_shader_input each frame
-            self.beat_uv=Vec2(0,0.5)
+            self.beat_uv=Vec2F(0,0.5)
             self.pta_beat_uv=PTALVecBase2f()
             self.pta_beat_uv.push_back(self.beat_uv)
             chroma_quad.set_shader_input("beat_uv",self.pta_beat_uv)
@@ -473,7 +473,6 @@ class App(DirectObject):
                 hp=hit_node.get_python_tag('hp')-1
                 hit_node.set_python_tag('hp', hp)
                 if hp <0:
-                    hit_node.get_python_tag('model').set_color((0.2,0,0,1), 1)
                     hit_node.get_python_tag('model').hide()
                     np=NodePath().any_path(hit_node)
                     np.set_collide_mask(BitMask32().all_off())
